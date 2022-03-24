@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/23 16:52:13 by avillar          ###   ########.fr       */
+/*   Updated: 2022/03/24 16:33:50 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 void	init_swap(t_swap *swap, int *a, int size)
 {
 	swap->a = a;
-	swap->b = malloc(sizeof(int) * (size + 1));
-	if (!swap->b)
-		free (swap->a);
-	swap->size = size;
-	swap->ini_size = size;
+	swap->b = NULL;
+	swap->bsize = 0;
+	swap->asize = size;
+	swap->aini_size = size;
+	swap->chunk_num = 0;
+	swap->chunk = NULL;
 }
 
 t_swap	parse(char *str)
@@ -31,13 +32,12 @@ t_swap	parse(char *str)
 
 	i = 0;
 	tab = ft_split(str, ' ');
-	res = malloc(sizeof(int) * (ft_tablen(tab) + 1));
+	res = malloc(sizeof(int) * (ft_tablen(tab)));
 	while (tab[i])
 	{
 		res[i] = ft_atoi(tab[i]);
 		i++;
 	}
-	res[i] = NULL;
 	init_swap(&swap, res, ft_tablen(tab));
 	free(tab);
 	return (swap);
@@ -53,11 +53,11 @@ int	ft_tablen(char **tab)
 	return (i);
 }
 
-void    init_split(t_split *split, const char *s, char c)
+void	init_split(t_split *split, const char *s, char c)
 {
-        split->i = skipc(s, c, 0);
-        split->j = 0;
-        split->len = 0;
+	split->i = skipc(s, c, 0);
+	split->j = 0;
+	split->len = 0;
 }
 
 int	ft_atoi(const char *str)
@@ -68,7 +68,7 @@ int	ft_atoi(const char *str)
 	rtn = 0;
 	nb = 1;
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-			|| *str == '\r' || *str == '\v')
+		|| *str == '\r' || *str == '\v')
 		str++;
 	if (*str == '-')
 		nb = -1;

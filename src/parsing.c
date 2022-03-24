@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:25:50 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/23 16:49:47 by avillar          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:43:34 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	ft_newsize(t_swap *swap, char c)
 
 	i = 0;
 	if (c == 'a')
-		while (i < swap->size && swap->a[i] != NULL)
+		while (i < swap->asize)
 			i++;
 	else
-		while (i < swap->size && swap->b[i] != NULL)
+		while (i < swap->bsize)
 			i++;
 	return (i);
 }
@@ -50,10 +50,10 @@ int	parse_nodup(t_swap *swap)
 	int	x;
 
 	i = 0;
-	while (i < swap->size)
+	while (i < swap->asize)
 	{
 		x = i + 1;
-		while (x < swap->size)
+		while (x < swap->asize)
 		{
 			if (swap->a[i] == swap->a[x])
 			{

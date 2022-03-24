@@ -6,7 +6,7 @@
 #    By: avillar <avillar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 12:50:52 by avillar           #+#    #+#              #
-#    Updated: 2022/03/23 16:26:46 by avillar          ###   ########.fr        #
+#    Updated: 2022/03/24 16:09:02 by avillar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,22 @@ NAME = push_swap
 SRCS =		push_swap.c	\
 			ft_split.c	\
 			utils1.c	\
+			utils2.c	\
+			utils3.c	\
 			parsing.c	\
+			ft_swap1.c	\
+			ft_swap2.c	\
+			ft_swap3.c	\
 
 SRC	=		test.c		\
 			ft_split.c	\
 			utils1.c	\
+			utils2.c	\
+			utils3.c	\
 			parsing.c	\
+			ft_swap1.c	\
+			ft_swap2.c	\
+			ft_swap3.c	\
 
 CFLAG = -Wall -Wextra -Werror
 

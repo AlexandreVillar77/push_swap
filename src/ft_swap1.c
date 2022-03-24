@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:27:58 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/23 16:51:27 by avillar          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:50:30 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,34 @@ void	ss(t_swap *swap)
 	sb(swap);
 }
 
-void	ra(t_swap *swap, int m)
+void	ra(t_swap *swap)
 {
 	int	i;
-	int	s;
-	int	last;
+	int	first;
 
 	i = 0;
-	while (i < swap->size && swap->a[i] != NULL)
+	while (i < swap->asize - 1)
 	{
 		if (i == 0)
-		{
-			last = swap->a[swap->size];
-			swap->a[swap->size] = swap->a[i];
-		}
+			first = swap->a[i];
+		swap->a[i] = swap->a[i + 1];
 		i++;
 	}
+	swap->a[i] = first;
+}
+
+void	pb(t_swap *swap)
+{
+	int	i;
+
+	i = 0;
+	swap->b = remalloc(swap->b, swap->bsize + 1, swap->bsize);
+	swap->bsize = swap->bsize + 1;
+	if (!swap->b)
+		return ;
+	pdown_b(swap);
+	swap->b[0] = swap->a[0];
+	pup_a(swap);
+	swap->a = remalloc(swap->a, swap->asize - 1, swap->asize);
+	swap->asize = swap->asize - 1;
 }
