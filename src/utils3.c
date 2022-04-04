@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:06:17 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 16:33:11 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:37:39 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,34 @@ void	init_chunk(t_swap *swap, int n, int s, int e, int size)
 
 void	remalloc_chunk(t_swap *swap, int num)
 {
-	int		i;
-	t_chunk	*chunk;
+	(void)swap;
+	(void)num;
+}
+
+int	find_min(int *x, int size)
+{
+	int	i;
+	int	min;
 
 	i = 0;
-	chunk = malloc(sizeof(t_chunk) * num);
+	min = x[i];
+	while (i < size)
+	{
+		if (min > x[i])
+			min = x[i];
+		i++;
+	}
+	return (min);
+}
+
+int	find_min_afsort(int *x, int size)
+{
+	int	i;
+	int	min;
+
+	i = 0;
+	while (i < size && x[i] < x[i + 1])
+		i++;
+	min = find_min(x + i, size);
+	return (min);
 }

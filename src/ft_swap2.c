@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:26:10 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 13:04:07 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:03:01 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ void	pup_b(t_swap *swap)
 
 void	pa(t_swap *swap)
 {
-	int	i;
-
-	i = 0;
 	swap->a = remalloc(swap->a, swap->asize + 1, swap->asize);
 	swap->asize = swap->asize + 1;
 	if (!swap->a)
@@ -94,4 +91,5 @@ void	pa(t_swap *swap)
 	pup_b(swap);
 	swap->b = remalloc(swap->b, swap->bsize - 1, swap->bsize);
 	swap->bsize = swap->bsize - 1;
+	ft_printf("pa\n");
 }

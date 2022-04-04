@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 16:33:26 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:11:29 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,12 @@ int	*fact_sort(int *tab, int size);
 int	*ft_numtabcpy(int *src, int size);
 int	catchmid(int *tab, int size);
 void	init_chunk(t_swap *swap, int n, int s, int e, int size);
+int	find_min(int *x, int size);
+int	find_min_afsort(int *x, int size);
+
+//algo_utils1.c
+void	push50perto_b(t_swap *swap);
+int	find_max(int *x, int size);
+int	find_max_afsort(int *x, int size);
 
 #endif

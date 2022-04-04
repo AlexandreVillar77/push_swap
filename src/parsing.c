@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:25:50 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 12:43:34 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:20:42 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	parse_nodup(t_swap *swap)
 		{
 			if (swap->a[i] == swap->a[x])
 			{
-				ft_printf("Error2\n");
+				ft_printf("Error2 num : %d is dup.\n", swap->a[i]);
 				return (1);
 			}
 			x++;

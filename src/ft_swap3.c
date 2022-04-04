@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:54:48 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 13:01:05 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:03:36 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	rb(t_swap *swap)
 		i++;
 	}
 	swap->b[i] = first;
+	ft_printf("rb\n");
 }
 
 void	rr(t_swap *swap)
 {
 	ra(swap);
 	rb(swap);
+	ft_printf("rr\n");
 }
 
 void	rra(t_swap *swap)
@@ -52,6 +54,7 @@ void	rra(t_swap *swap)
 		i++;
 	}
 	swap->a[0] = last;
+	ft_printf("rra\n");
 }
 
 void	rrb(t_swap *swap)
@@ -72,10 +75,12 @@ void	rrb(t_swap *swap)
 		i++;
 	}
 	swap->b[0] = last;
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_swap *swap)
 {
 	rra(swap);
 	rrb(swap);
+	ft_printf("rrr\n");
 }
