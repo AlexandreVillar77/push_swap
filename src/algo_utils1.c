@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:06:59 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/04 16:11:14 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/07 16:12:43 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push50perto_b(t_swap *swap)
 	mid = catchmid(fact_sort(swap->a, swap->asize), swap->asize);
 	while (i < swap->asize)
 	{
-		if (swap->a[i] >= mid)
+		if (swap->a[i] <= mid)
 		{
 			v = swap->a[i];
 			if (i < swap->asize / 2)
@@ -64,8 +64,68 @@ int	find_max_afsort(int *x, int size)
 	int	max;
 
 	i = 0;
-	while (i < size && x[i] < x[i + 1])
+	while (i < size - 1 && x[i] < x[i + 1])
 		i++;
+	ft_printf("i = %d\n", i);
+	ft_printf("swapa[i] = %d\n",x[i]);
+	ft_printf("swap a [i - 1] = %d\n", x[i - 1]);
 	max = find_max(x + i, size);
 	return (max);
+}
+
+int	topa_tob(t_swap *swap, int x)
+{
+	int	i;
+	int	v;
+
+	i = -1;
+	v = 0;
+	while (++i < swap->asize && v == 0)
+	{
+		if (swap->a[i] == x)
+		{
+			v = swap->a[i];
+			if (i < swap->asize / 2)
+			{
+				while (swap->a[0] != x)
+					ra(swap);
+			}
+			else
+			{
+				while (swap->a[0] != x)
+					rra(swap);
+			}
+			pb(swap);
+		}
+	}
+	return (0);
+}
+
+int	topb_toa(t_swap *swap, int x)
+{
+	int	i;
+	int	v;
+
+	i = -1;
+	v = 0;
+	while (++i < swap->bsize && v == 0)
+	{
+		if (swap->b[i] == x)
+		{
+			v = swap->b[i];
+			if (i < swap->bsize / 2)
+			{
+				while (swap->b[0] != x)
+					rb(swap);
+			}
+			else
+			{
+				while (swap->b[0] != x)
+					rrb(swap);
+			}
+			pa(swap);
+			return (0);
+		}
+	}
+	return (1);
 }

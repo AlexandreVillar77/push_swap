@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/03/24 16:33:50 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:58:21 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	init_swap(t_swap *swap, int *a, int size)
 	swap->bsize = 0;
 	swap->asize = size;
 	swap->aini_size = size;
-	swap->chunk_num = 0;
+	swap->bini_size = swap->aini_size / 2;
+	swap->b_min_sort = find_max(swap->a, swap->asize) + 1;
+	swap->chunk_size = 0;
 	swap->chunk = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/04 16:11:29 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/07 16:14:56 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ typedef struct s_chunk{
 }				t_chunk;
 
 typedef struct s_swap{
-		int		*a;
-		int		*b;
-		int		asize;
-		int		bsize;
-		int		aini_size;
-		int		chunk_num;
-		t_chunk	*chunk;
-}				t_swap;
+		int			*a;
+		int			*b;
+		int			asize;
+		int			bsize;
+		int			bini_size;
+		long int	b_min_sort;
+		int			aini_size;
+		int			chunk_size;
+		t_chunk		*chunk;
+}					t_swap;
 
 typedef struct s_split{
         int             i;
@@ -95,9 +97,23 @@ void	init_chunk(t_swap *swap, int n, int s, int e, int size);
 int	find_min(int *x, int size);
 int	find_min_afsort(int *x, int size);
 
+//utils4.c
+int	next_isrevsort(int *tab, int size);
+int	next_issorted(int *tab, int size);
+
 //algo_utils1.c
 void	push50perto_b(t_swap *swap);
 int	find_max(int *x, int size);
 int	find_max_afsort(int *x, int size);
+int	topa_tob(t_swap *swap, int x);
+int	topb_toa(t_swap *swap, int x);
+
+//algo_utils2.c
+void	push25_tob(t_swap *swap, int min);
+int	find_max_under(int *x, int size, long int top);
+int	find_min_under(int *x, int size, long int top);
+int	find_quart3(t_swap *swap);
+int	find_quart2(t_swap *swap);
+
 
 #endif
