@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/07 16:14:56 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:08:50 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,9 @@ int	find_max_under(int *x, int size, long int top);
 int	find_min_under(int *x, int size, long int top);
 int	find_quart3(t_swap *swap);
 int	find_quart2(t_swap *swap);
+
+//algo_utils3.c
+int	find_quart1(t_swap *swap);
 
 
 #endif

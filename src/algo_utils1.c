@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:06:59 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/07 16:12:43 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:22:25 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ int	find_max_afsort(int *x, int size)
 	i = 0;
 	while (i < size - 1 && x[i] < x[i + 1])
 		i++;
-	ft_printf("i = %d\n", i);
-	ft_printf("swapa[i] = %d\n",x[i]);
-	ft_printf("swap a [i - 1] = %d\n", x[i - 1]);
 	max = find_max(x + i, size);
 	return (max);
 }

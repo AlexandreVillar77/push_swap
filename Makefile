@@ -6,7 +6,7 @@
 #    By: avillar <avillar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 12:50:52 by avillar           #+#    #+#              #
-#    Updated: 2022/04/07 14:23:48 by avillar          ###   ########.fr        #
+#    Updated: 2022/04/11 12:09:08 by avillar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =		push_swap.c		\
 			ft_swap3.c		\
 			algo_utils1.c	\
 			algo_utils2.c	\
+			algo_utils3.c	\
 
 SRC	=		test.c			\
 			ft_split.c		\
@@ -37,6 +38,7 @@ SRC	=		test.c			\
 			ft_swap3.c		\
 			algo_utils1.c	\
 			algo_utils2.c	\
+			algo_utils3.c	\
 
 CFLAG = -Wall -Wextra -Werror
 

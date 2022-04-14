@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:16:15 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/07 16:14:30 by avillar          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:21:16 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	push25_tob(t_swap *swap, int min)
 		return ;
 	while (v < swap->chunk_size && i < swap->asize)
 	{
-		if (swap->a[i] >= min)
+		if (swap->a[i] < min)
 		{
 			topa_tob(swap, swap->a[i]);
 			i = 0;
@@ -81,7 +81,7 @@ int	find_quart2(t_swap *swap)
 	int	to;
 	int	*rtn;	
 
-	to = swap->aini_size - (swap->aini_size * 0.5);
+	to = swap->aini_size - (swap->aini_size * 0.50);
 	rtn = fact_sort(swap->a, swap->asize);
 	return (rtn[to]);
 }
