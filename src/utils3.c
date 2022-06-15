@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:06:17 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/04 15:37:39 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:07:17 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ int	catchmid(int *tab, int size)
 	return (tab[size / 2]);
 }
 
-void	init_chunk(t_swap *swap, int n, int s, int e, int size)
-{
-	swap->chunk[n].num = n;
-	swap->chunk[n].index_s = s;
-	swap->chunk[n].index_e = e;
-	swap->chunk[n].size = size;
-}
-
-void	remalloc_chunk(t_swap *swap, int num)
-{
-	(void)swap;
-	(void)num;
-}
-
 int	find_min(int *x, int size)
 {
 	int	i;
@@ -64,14 +50,12 @@ int	find_min(int *x, int size)
 	return (min);
 }
 
-int	find_min_afsort(int *x, int size)
+void	free_swap(t_swap *swap)
 {
-	int	i;
-	int	min;
-
-	i = 0;
-	while (i < size && x[i] < x[i + 1])
-		i++;
-	min = find_min(x + i, size);
-	return (min);
+	if (swap->a)
+		free(swap->a);
+	if (swap->b)
+		free(swap->b);
+	if (swap)
+		free(swap);
 }

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:21:42 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/07 16:04:51 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:07:00 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*remalloc(int *src, int nsize, int bsize)
 	int	*new;
 
 	i = 0;
-	new = malloc(sizeof(int) * (nsize));
+	new = malloc(sizeof(int) * (nsize + 1));
 	if (!new)
 		return (new);
 	while (i < nsize && i < bsize)
@@ -26,41 +26,15 @@ int	*remalloc(int *src, int nsize, int bsize)
 		new[i] = src[i];
 		i++;
 	}
+	if (src)
+		free(src);
 	return (new);
-}
-
-int	is_sorted(int *tab, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (tab[i + 1] < tab[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	is_rev_sorted(int *tab, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (tab[i + 1] > tab[i])
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 void	ft_swap(int	*a, int *b)
 {
 	int	s;
-	int s2;
+	int	s2;
 
 	s = *a;
 	s2 = *b;
@@ -68,10 +42,11 @@ void	ft_swap(int	*a, int *b)
 	*b = s;
 }
 
-int	*fact_sort(int *tab, int size)
+int	fact_sort(int *tab, int size)
 {
 	int	*fact;
 	int	i;
+	int	rtn;
 
 	fact = ft_numtabcpy(tab, size);
 	if (!fact)
@@ -86,5 +61,8 @@ int	*fact_sort(int *tab, int size)
 			i++;
 		}
 	}
-	return (fact);
+	rtn = catchmid(fact, size);
+	if (fact)
+		free(fact);
+	return (rtn);
 }

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_struct_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 08:48:41 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/15 16:03:45 by avillar          ###   ########.fr       */
+/*   Created: 2022/06/08 10:30:52 by avillar           #+#    #+#             */
+/*   Updated: 2022/06/15 10:04:43 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-int	main(int argc, char **argv)
+void	new_chunk(t_swap *swap, int max, int size)
 {
-	t_swap	*swap;
+	t_chunk	*new;
 
-	if (argc < 2)
-		return (0);
-	swap = parse(argv[1]);
-	if (parse_check(argv[1]) == 1 || swap == NULL || parse_nodup(swap) == 1)
+	new = ft_lstnew(find_min(swap->b, size), max, size);
+	if (!new)
 	{
 		write(2, "Error\n", 7);
-		if (swap)
-			free_swap(swap);
-		return (1);
+		exit(EXIT_FAILURE);
 	}
-	if (is_sorted(swap->a, swap->asize) == 1)
-		algo_manage(swap);
-	free_swap(swap);
-	return (0);
+	ft_lstadd_front(&swap->bchunk, new);
+}
+
+void	ft_lstdel_first(t_chunk **alst)
+{
+	t_chunk	*tmp;
+
+	if (!alst)
+		return ;
+	tmp = *alst;
+	*alst = (*alst)->next;
+	free(tmp);
 }

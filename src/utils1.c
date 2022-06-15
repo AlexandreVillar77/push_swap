@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/07 14:58:21 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:17:26 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,34 @@ void	init_swap(t_swap *swap, int *a, int size)
 	swap->asize = size;
 	swap->aini_size = size;
 	swap->bini_size = swap->aini_size / 2;
-	swap->b_min_sort = find_max(swap->a, swap->asize) + 1;
-	swap->chunk_size = 0;
-	swap->chunk = NULL;
+	swap->bchunk = NULL;
+	swap->achunk = NULL;
 }
 
-t_swap	parse(char *str)
+t_swap	*parse(char *str)
 {
 	int		*res;
 	int		i;
 	char	**tab;
-	t_swap	swap;
+	t_swap	*swap;
 
 	i = 0;
 	tab = ft_split(str, ' ');
 	res = malloc(sizeof(int) * (ft_tablen(tab)));
+	swap = malloc(sizeof(t_swap));
+	if (!res || !swap)
+		return (NULL);
+	if (check_max(tab) == 1)
+		return (NULL);
 	while (tab[i])
 	{
 		res[i] = ft_atoi(tab[i]);
 		i++;
 	}
-	init_swap(&swap, res, ft_tablen(tab));
+	init_swap(swap, res, ft_tablen(tab));
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
 	free(tab);
 	return (swap);
 }
@@ -62,7 +69,7 @@ void	init_split(t_split *split, const char *s, char c)
 	split->len = 0;
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	long int		rtn;
 	int				nb;
@@ -82,5 +89,6 @@ int	ft_atoi(const char *str)
 		rtn += *str - 48;
 		str++;
 	}
-	return (rtn * nb);
+	rtn = rtn * nb;
+	return (rtn);
 }

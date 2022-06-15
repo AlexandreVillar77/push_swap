@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:54:48 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/04 16:03:36 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 16:20:55 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,27 @@ void	rb(t_swap *swap)
 
 void	rr(t_swap *swap)
 {
-	ra(swap);
-	rb(swap);
+	int	i;
+	int	first;
+
+	i = 0;
+	while (i < swap->asize - 1)
+	{
+		if (i == 0)
+			first = swap->a[i];
+		swap->a[i] = swap->a[i + 1];
+		i++;
+	}
+	swap->a[i] = first;
+	i = 0;
+	while (i < swap->bsize - 1)
+	{
+		if (i == 0)
+			first = swap->b[i];
+		swap->b[i] = swap->b[i + 1];
+		i++;
+	}
+	swap->b[i] = first;
 	ft_printf("rr\n");
 }
 
